@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+<title>Rätsel · Das Wort</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Mountains+of+Christmas:wght@700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="lights"></div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Das Wort</h1>
+    <p class="sub">Errate das gesuchte Wort. Nach jedem Versuch verraten dir die Farben, wie nah du dran bist.</p>
+  </header>
+
+  <main id="game">
+    <div class="panel">
+      <p class="hint" id="hint"></p>
+      <p class="hint legend">
+        <span><i class="chip correct">A</i> richtig</span>
+        <span><i class="chip present">B</i> falsche Stelle</span>
+        <span><i class="chip absent">C</i> kommt nicht vor</span>
+      </p>
+      <div class="w-grid" id="wordle-grid"></div>
+      <div class="keyboard" id="keyboard"></div>
+    </div>
+    <div class="msg" id="msg"></div>
+  </main>
+
+  <footer>❄ ❄ ❄</footer>
+</div>
+
+<script>
+/* ===================================================================
+   CONFIG – change the content of this puzzle here
+   -------------------------------------------------------------------
+   number  : shown at the top as "Rätsel 1"
+   id      : unique name of this page (used to remember "solved")
+   answer  : the word to guess. Any length from 4 to 7 works,
+             Ä / Ö / Ü count as one letter.
+   guesses : how many attempts the player has
+   reward  : shown after solving. HTML is allowed, e.g. <b>bold</b>,
+             <br> for a new line, or <img src="img/foto.jpg">
+   =================================================================== */
+const CONFIG = {
+  number: 1,
+  id: "zimtstern",
+  answer: "KEKSE",
+  guesses: 6,
+  reward: "Dein nächster Hinweis:<br><b>[HIER DEINEN HINWEIS EINTRAGEN]</b>",
+};
+</script>
+<script src="js/common.js"></script>
+<script src="js/wordle.js"></script>
+</body>
+</html>

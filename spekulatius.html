@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+<title>Rätsel · Das Gitter</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Mountains+of+Christmas:wght@700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="lights"></div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Das Gitter</h1>
+    <p class="sub">Löse das Kreuzworträtsel. Tippe auf ein Feld oder einen Hinweis, um loszulegen – tippst du nochmal auf dasselbe Feld, wechselt die Richtung.</p>
+  </header>
+
+  <main id="game">
+    <div class="panel">
+      <div class="cw-current" id="cw-current"><span class="muted">Tippe auf ein Feld, um zu beginnen.</span></div>
+      <div class="cw-wrap"><div class="cw-grid" id="cw-grid"></div></div>
+      <div class="cw-clues">
+        <div>
+          <h3>Waagerecht →</h3>
+          <ol id="cw-across"></ol>
+        </div>
+        <div>
+          <h3>Senkrecht ↓</h3>
+          <ol id="cw-down"></ol>
+        </div>
+      </div>
+      <div class="row-btns">
+        <button type="button" class="btn primary" id="cw-check">Prüfen</button>
+      </div>
+    </div>
+    <div class="msg" id="msg"></div>
+  </main>
+
+  <footer>❄ ❄ ❄</footer>
+</div>
+
+<script>
+/* ===================================================================
+   CONFIG – change the content of this puzzle here
+   -------------------------------------------------------------------
+   number   : shown at the top as "Rätsel 3"
+   id       : unique name of this page (used to remember "solved")
+   solution : the filled-in grid, one string per row.
+              "." = black square, every other character = answer letter.
+              All rows should have the same length.
+   clues    : one entry per word, by the cell where it STARTS.
+              row / col are counted from 0 (top-left cell = row 0, col 0).
+              The numbers in the grid are assigned automatically.
+              Open the browser console (F12) – it warns you if a clue
+              doesn't match the grid or a word has no clue.
+   reward   : shown after solving. HTML is allowed.
+   =================================================================== */
+const CONFIG = {
+  number: 3,
+  id: "spekulatius",
+  solution: [
+    ".....STALL",
+    "S........A",
+    "TANNENBAUM",
+    "E.U.N..D.E",
+    "R.S.G..V.T",
+    "N.S.ELFE.T",
+    "....L..N.A",
+    ".......T..",
+  ],
+  clues: {
+    across: [
+      { row: 0, col: 5, clue: "Hier kam das Christkind zur Welt" },             // STALL
+      { row: 2, col: 0, clue: "O ___, wie grün sind deine Blätter" },           // TANNENBAUM
+      { row: 5, col: 4, clue: "Kleiner Helfer in der Werkstatt am Nordpol" },   // ELFE
+    ],
+    down: [
+      { row: 0, col: 9, clue: "„Früher war mehr ___“ (Loriot)" },               // LAMETTA
+      { row: 1, col: 0, clue: "Wies den Heiligen Drei Königen den Weg" },       // STERN
+      { row: 2, col: 2, clue: "Wird vom Nussknacker geknackt" },                // NUSS
+      { row: 2, col: 4, clue: "Verkündete den Hirten die frohe Botschaft" },    // ENGEL
+      { row: 2, col: 7, clue: "Vier Kerzen, vier Sonntage" },                   // ADVENT
+    ],
+  },
+  reward: "Dein nächster Hinweis:<br><b>[HIER DEINEN HINWEIS EINTRAGEN]</b>",
+};
+</script>
+<script src="js/common.js"></script>
+<script src="js/crossword.js"></script>
+</body>
+</html>

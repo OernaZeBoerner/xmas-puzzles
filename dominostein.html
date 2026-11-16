@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+<title>Rätsel · Das Schiebepuzzle</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Mountains+of+Christmas:wght@700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="lights"></div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Das Schiebepuzzle</h1>
+    <p class="sub">Ein Teil fehlt – schiebe die anderen, bis das Bild wieder stimmt. Tippe auf ein Teil neben der Lücke, um es zu verschieben.</p>
+  </header>
+
+  <main id="game">
+    <div class="panel">
+      <div class="sl-board" id="board"></div>
+      <div class="sl-bar">
+        <div class="sl-count">Züge: <b id="moves">0</b></div>
+        <button type="button" class="sl-preview" id="preview" aria-label="Vorlage anzeigen"><span>Vorlage</span></button>
+      </div>
+      <div class="row-btns">
+        <button type="button" class="btn" id="sl-numbers">Zahlen zeigen</button>
+        <button type="button" class="btn" id="sl-shuffle">Neu mischen</button>
+      </div>
+    </div>
+    <div class="msg" id="msg"></div>
+  </main>
+
+  <footer>❄ ❄ ❄</footer>
+</div>
+
+<script>
+/* ===================================================================
+   CONFIG – change the content of this puzzle here
+   -------------------------------------------------------------------
+   number : shown at the top as "Rätsel 5"
+   id     : unique name of this page (used to remember "solved")
+   image  : the picture to rebuild. Put your own photo into the img
+            folder and write its name here, e.g. "img/foto.jpg".
+            Any photo works – it is cropped to a square automatically.
+   size   : 3 = 3×3 (8 tiles, recommended), 4 = 4×4 (15 tiles, hard)
+   reward : shown after solving. HTML is allowed.
+   =================================================================== */
+const CONFIG = {
+  number: 5,
+  id: "dominostein",
+  image: "img/bild.svg",
+  size: 3,
+  reward: "Dein nächster Hinweis:<br><b>[HIER DEINEN HINWEIS EINTRAGEN]</b>",
+};
+</script>
+<script src="js/common.js"></script>
+<script src="js/slider.js"></script>
+</body>
+</html>

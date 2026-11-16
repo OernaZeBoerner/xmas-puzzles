@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+<title>Rätsel · Der Adventskranz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Mountains+of+Christmas:wght@700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="lights"></div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Der Adventskranz</h1>
+    <p class="sub">Jede Emoji-Reihe steht für einen Weihnachtsfilm oder ein Weihnachtslied. Für jede richtige Antwort wird eine Kerze angezündet.</p>
+  </header>
+
+  <main id="game">
+    <div class="panel">
+      <div class="wreath" id="wreath"></div>
+      <div class="riddles" id="riddles"></div>
+    </div>
+    <div class="msg" id="msg"></div>
+  </main>
+
+  <footer>❄ ❄ ❄</footer>
+</div>
+
+<script>
+/* ===================================================================
+   CONFIG – change the content of this puzzle here
+   -------------------------------------------------------------------
+   number       : shown at the top as "Rätsel 4"
+   id           : unique name of this page (used to remember "solved")
+   riddles      : one entry per candle (4 = a classic Advent wreath,
+                  but 2–6 work too).
+     emoji      : the emoji sequence to decode
+     answers    : every answer you want to accept. The FIRST one is
+                  shown when solved. Capitals, spaces, umlauts and
+                  punctuation don't matter ("kevin - allein zu haus" ok).
+     tip        : optional hint behind a "Tipp anzeigen" button ("" = none)
+   typoTolerance: true = accept 1–2 small typos in longer answers
+   reward       : shown after solving. HTML is allowed.
+   =================================================================== */
+const CONFIG = {
+  number: 4,
+  id: "vanillekipferl",
+  riddles: [
+    {
+      emoji: "🏠👦✈️🎄",
+      answers: ["Kevin – Allein zu Haus", "Kevin allein zu Haus", "Kevin", "Home Alone"],
+      tip: "Ein Film aus dem Jahr 1990.",
+    },
+    {
+      emoji: "👸🌰🌰🌰🐴",
+      answers: ["Drei Haselnüsse für Aschenbrödel", "Drei Nüsse für Aschenbrödel", "Aschenbrödel"],
+      tip: "Ein Märchenfilm, der jedes Jahr im Fernsehen läuft.",
+    },
+    {
+      emoji: "🤫🌃⭐",
+      answers: ["Stille Nacht", "Stille Nacht, heilige Nacht", "Silent Night"],
+      tip: "Ein Lied – „… heilige Nacht“.",
+    },
+    {
+      emoji: "🦌🔴👃",
+      answers: ["Rudolph mit der roten Nase", "Rudolph", "Rudolf", "Rudolph the Red-Nosed Reindeer", "Rudolph das Rentier"],
+      tip: "Er führt den Schlitten des Weihnachtsmanns durch den Nebel.",
+    },
+  ],
+  typoTolerance: true,
+  reward: "Dein nächster Hinweis:<br><b>[HIER DEINEN HINWEIS EINTRAGEN]</b>",
+};
+</script>
+<script src="js/common.js"></script>
+<script src="js/emoji.js"></script>
+</body>
+</html>

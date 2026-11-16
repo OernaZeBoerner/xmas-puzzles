@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎄</text></svg>">
+<title>Rätsel · Die Gruppen</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Mountains+of+Christmas:wght@700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="lights"></div>
+    <div class="eyebrow" id="eyebrow"></div>
+    <h1>Die Gruppen</h1>
+    <p class="sub">Sechzehn Begriffe, vier Gruppen. Wähle vier Kärtchen, die zusammengehören, und tippe auf „Prüfen“.</p>
+  </header>
+
+  <main id="game">
+    <div class="panel">
+      <div class="g-status" id="g-status"></div>
+      <div class="g-solved-list" id="g-solved"></div>
+      <div class="g-grid" id="g-grid"></div>
+      <div class="row-btns">
+        <button type="button" class="btn" id="g-shuffle">Mischen</button>
+        <button type="button" class="btn" id="g-clear">Abwählen</button>
+        <button type="button" class="btn primary" id="g-submit">Prüfen</button>
+      </div>
+    </div>
+    <div class="msg" id="msg"></div>
+  </main>
+
+  <footer>❄ ❄ ❄</footer>
+</div>
+
+<script>
+/* ===================================================================
+   CONFIG – change the content of this puzzle here
+   -------------------------------------------------------------------
+   number   : shown at the top as "Rätsel 2"
+   id       : unique name of this page (used to remember "solved")
+   mistakes : how many wrong guesses are allowed before it resets
+   groups   : exactly 4 groups with exactly 4 words each.
+              Every word may appear only once. Order doesn't matter
+              (tiles are shuffled). "name" is shown when a group is found.
+              Tip: one word that *seems* to fit two groups makes it fun
+              (here: KUGEL – Christbaumkugel or Schneekugel?), but make
+              sure the full solution is still unique.
+              Long words: a | marks where the word may break onto a
+              second line on small phones, e.g. "STROH|STERN".
+   reward   : shown after solving. HTML is allowed.
+   =================================================================== */
+const CONFIG = {
+  number: 2,
+  id: "lebkuchen",
+  mistakes: 4,
+  groups: [
+    { name: "Am Weihnachtsbaum",              words: ["LAMETTA", "GIR|LANDE", "KERZE", "STROH|STERN"] },
+    { name: "Schnee…",                        words: ["BALL", "MANN", "FLOCKE", "KUGEL"] },
+    { name: "Weihnachtsgebäck",               words: ["ZIMT|STERN", "STOLLEN", "PRINTE", "MA|KRONE"] },
+    { name: "Rentiere des Weihnachtsmanns",   words: ["RUDOLPH", "DONNER", "KOMET", "AMOR"] },
+  ],
+  reward: "Dein nächster Hinweis:<br><b>[HIER DEINEN HINWEIS EINTRAGEN]</b>",
+};
+</script>
+<script src="js/common.js"></script>
+<script src="js/groups.js"></script>
+</body>
+</html>
