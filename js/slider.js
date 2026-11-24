@@ -10,11 +10,14 @@
   const preview = document.getElementById('preview');
   const btnNumbers = document.getElementById('sl-numbers');
   const btnShuffle = document.getElementById('sl-shuffle');
+  const btnReset = document.getElementById('sl-reset');
   board.style.setProperty('--n', N);
 
   let state = [];  // state[position] = tile id
+  let start = [];  // arrangement right after shuffling, for "reset"
   let tiles = [];
   let moves = 0, done = false;
+  let winTimers = [];
 
   /* ---------- image: centre-crop to a square so any photo works ---------- */
   function loadImage(url) {
@@ -94,6 +97,20 @@
       prev = empty;
       empty = p;
     }
+    start = state.slice();
+    begin();
+  }
+
+  // back to the arrangement this round started with
+  function reset() {
+    if (!start.length) return;
+    state = start.slice();
+    begin();
+  }
+
+  function begin() {
+    winTimers.forEach(clearTimeout); // a reset right after winning must not finish the win animation
+    winTimers = [];
     moves = 0;
     done = false;
     movesEl.textContent = '0';
@@ -121,8 +138,10 @@
     place();
     if (isSolved()) {
       done = true;
-      setTimeout(() => board.classList.add('done'), 200);
-      setTimeout(() => XMAS.solved(), 1100);
+      winTimers = [
+        setTimeout(() => board.classList.add('done'), 200),
+        setTimeout(() => XMAS.solved(), 1100),
+      ];
     }
   }
 
@@ -131,6 +150,7 @@
     btnNumbers.textContent = on ? 'Zahlen ausblenden' : 'Zahlen zeigen';
   });
   btnShuffle.addEventListener('click', shuffle);
+  if (btnReset) btnReset.addEventListener('click', reset);
   preview.addEventListener('click', () => { if (!done) board.classList.toggle('peek'); });
   board.addEventListener('click', e => {
     if (e.target === board) board.classList.remove('peek');
