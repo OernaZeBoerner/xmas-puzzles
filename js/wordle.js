@@ -118,28 +118,25 @@
     }, LEN * FLIP + 280);
   }
 
-  // Key colours only reflect what the guesses so far have revealed:
-  // - known = fewest copies of a letter the word must contain (most hits in one guess,
-  //   or the number of distinct green positions, whichever is larger)
+  // Key colours for every letter guessed so far:
+  // - greens = distinct positions where the letter has been green
+  // - total  = how often the letter appears in the answer
   // - 'partial' (half green, half yellow) = some copies are placed, others are still missing
   function keyStates() {
-    const info = {};
+    const greens = {};
     history.forEach(({ guess, res }) => {
-      const hits = {};
       guess.forEach((ch, i) => {
-        const k = info[ch] || (info[ch] = { greens: new Set(), known: 0 });
-        if (res[i] === 'correct') k.greens.add(i);
-        if (res[i] !== 'absent') hits[ch] = (hits[ch] || 0) + 1;
+        const g = greens[ch] || (greens[ch] = new Set());
+        if (res[i] === 'correct') g.add(i);
       });
-      Object.keys(hits).forEach(ch => { info[ch].known = Math.max(info[ch].known, hits[ch]); });
     });
     const states = {};
-    Object.keys(info).forEach(ch => {
-      const greens = info[ch].greens.size;
-      const known = Math.max(info[ch].known, greens);
-      if (known === 0) states[ch] = 'absent';
-      else if (greens === 0) states[ch] = 'present';
-      else states[ch] = greens < known ? 'partial' : 'correct';
+    Object.keys(greens).forEach(ch => {
+      const placed = greens[ch].size;
+      const total = ANSWER.filter(a => a === ch).length;
+      if (total === 0) states[ch] = 'absent';
+      else if (placed === 0) states[ch] = 'present';
+      else states[ch] = placed < total ? 'partial' : 'correct';
     });
     return states;
   }
