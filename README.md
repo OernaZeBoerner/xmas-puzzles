@@ -74,3 +74,19 @@ To try it on your phone, open `http://<your-PC-IP>:8000/zimtstern.html` while bo
 
 Open every URL once yourself (and solve the puzzle) before printing the QR codes.
 Then visit each page with `?reset` so your own browser starts fresh.
+
+## How to solve the picture puzzle
+The goal is tiles 1–8 in reading order with the gap at the bottom right. "Zahlen zeigen" shows the numbers on the tiles, which helps a lot. The method is to solve the top row, then the left column, then turn the last 2×2 block into place.
+
+- Top row (1 2 3):
+  - Move 1 to the top-left corner.
+  - The 3 can't go straight in without knocking the 2 out again. So put 2 in the top-right corner and 3 directly below it, with the gap in the top-middle spot.
+  - Slide 2 left, then slide 3 up. The row is done.
+- Left column (4, 7): same trick, turned sideways.
+  - Put 4 in the bottom-left corner and 7 to its right, with the gap in the middle of the left column.
+  - Slide 4 up, then slide 7 left.
+- Last 2×2 block (5, 6, 8): cycle the three tiles around the gap until they line up. It always works out, because the shuffle only ever makes legal moves, so every arrangement is solvable.
+
+**Tip:** if you tap a tile in the gap's row or column, all the tiles between it and the gap slide at once, and that counts as one move. Using this often brings your count down a lot.
+
+**About "optimal":** any 3×3 arrangement can be solved in at most 31 single-tile moves. Finding the fewest moves for a given arrangement needs a computer search, though. There are only 181,440 possible arrangements, so the game could do that search instantly if you want it to.
